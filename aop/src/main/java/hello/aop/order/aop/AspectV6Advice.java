@@ -15,13 +15,17 @@ public class AspectV6Advice {
         try {
             //@Before
             log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
+
             Object result = joinPoint.proceed();
+
             //@AfterReturning
             log.info("[트랜잭션 커밋] {}", joinPoint.getSignature());
+
             return result;
         } catch (Exception e) {
             //@AfterThrowing
             log.info("[트랜잭션 롤백] {}", joinPoint.getSignature());
+
             throw e;
         } finally {
             //@After
@@ -41,7 +45,7 @@ public class AspectV6Advice {
 
     @AfterThrowing(value = "hello.aop.order.aop.Pointcuts.orderAndService()", throwing = "ex")
     public void doThrowing(JoinPoint joinPoint, Exception ex) {
-        log.info("[ex] {} message={}", ex);
+        log.info("[ex] {} message={}", joinPoint.getSignature(), ex.getMessage());
     }
 
     @After(value = "hello.aop.order.aop.Pointcuts.orderAndService()")
@@ -50,3 +54,4 @@ public class AspectV6Advice {
     }
 
 }
+

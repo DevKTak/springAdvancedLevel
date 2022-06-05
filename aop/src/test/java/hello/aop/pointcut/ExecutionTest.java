@@ -115,6 +115,7 @@ public class ExecutionTest {
         assertThat(pointcut.matches(internalMethod, MemberServiceImpl.class)).isTrue();
     }
 
+    // 포인트컷으로 지정한 MemberService는 internal 이라는 이름의 메서드가 없다.
     @Test
     void typeMatchNoSuperTypeMethodFalse() throws NoSuchMethodException {
         pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
