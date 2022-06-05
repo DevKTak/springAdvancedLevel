@@ -8,11 +8,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 @Slf4j
-@Import({AtTargetAtWithinTest.Config.class})
+//@Import({AtTargetAtWithinTest.Config.class}) // @TestConfiguration 으로 대체 가능
 @SpringBootTest
 public class AtTargetAtWithinTest {
 
@@ -26,6 +27,7 @@ public class AtTargetAtWithinTest {
         child.parentMethod(); //부모 클래스만 있는 메서드
     }
 
+    @TestConfiguration
     static class Config {
 
         @Bean
