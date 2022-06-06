@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Slf4j
-//@Import(TraceAspect.class)
 @Import({TraceAspect.class, RetryAspect.class})
 @SpringBootTest
 public class ExamTest {
@@ -20,7 +19,7 @@ public class ExamTest {
     @Test
     void test() {
         for (int i = 0; i < 5; i++) {
-            log.info("client request i={}", i);
+            log.info("{}client request i={}", System.lineSeparator(), i);
             examService.request("data" + i);
         }
     }
