@@ -19,7 +19,8 @@ public class ExamTest {
     @Test
     void test() {
         for (int i = 0; i < 5; i++) {
-            log.info("{}client request i={}", System.lineSeparator(), i);
+            System.out.println();
+            log.info("client request i = {}", i);
             examService.request("data" + i);
         }
     }
